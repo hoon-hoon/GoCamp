@@ -38,11 +38,15 @@ export const updateSideNav = (item) => {
 
     const unavail = item.animalCmgCl.includes('불가능') ? 'unavailable' : 'available';
 
+    const imageElement = item.firstImageUrl
+        ? `<img class="thumbnail" src="${item.firstImageUrl}" alt="${item.facltNm}" />`
+        : '';
+
     infoSection.innerHTML = `
         <h2 class="name">${item.facltNm}</h2>
         <div class="infoHead">
-            <img class="thumbnail" src="${item.firstImageUrl}" alt="${item.facltNm}" />
-            <div class="infoHead_p">
+        ${imageElement}
+        <div class="infoHead_p">
                 <p class="address">${item.addr1}</p>
                 <p class="description">${item.intro}</p>
             </div>
