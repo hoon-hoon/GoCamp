@@ -1,4 +1,5 @@
 import { searchCampingData } from './api.js';
+import { getMap } from './map.js';
 
 const sideNav = document.querySelector('.sideNav');
 const toggleButton = document.querySelector('.toggleButton');
@@ -100,6 +101,11 @@ export const handleSearch = async () => {
             item.addEventListener('click', () => {
                 const selectedId = item.getAttribute('data-id');
                 const selectedItem = results.find(result => result.contentId === selectedId);
+
+                // 지도 focus 이동
+                const map = getMap();
+                const markerPosition = new kakao.maps.LatLng(selectedItem.mapY, selectedItem.mapX);
+                map.panTo(markerPosition);
 
                 // SideNav 업데이트
                 updateSideNav(selectedItem);

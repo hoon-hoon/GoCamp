@@ -4,6 +4,8 @@ import { updateSideNav, openSideNav } from './sideNav.js';
 
 let map;
 let markers = [];
+let activeOverlay = null;
+export const getMap = () => map;
 
 loadKakaoMap().then(async () => {
     const loadingSpinner = document.querySelector('.loadingSpinner');
@@ -54,15 +56,27 @@ function addMarkers(data) {
 
         overlay.setMap(map);
 
+        const activateOverlay = () => {
+            if (activeOverlay) {
+                activeOverlay.classList.remove('active');
+            }
+            overlayContent.classList.add('active');
+            activeOverlay = overlayContent;
+        };
+
         // 오버레이 클릭 이벤트
         overlayContent.addEventListener('click', () => {
+            map.panTo(markerPosition); // panTo -> 지도 focus 부드럽게 이동
             updateSideNav(item);
             openSideNav();
+            activateOverlay(); // 오버레이 활성화
         });
 
         kakao.maps.event.addListener(marker, 'click', () => {
+            map.panTo(markerPosition);
             updateSideNav(item);
             openSideNav();
+            activateOverlay();
         });
 
     });

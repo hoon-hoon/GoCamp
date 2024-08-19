@@ -39,6 +39,8 @@
   }
 }
 
+/*  */
+
 .label {
   background: var(--blue-100);
   border: 2px solid var(--blue-600);
@@ -55,6 +57,27 @@
 .label:hover span {
   color: var(--blue-600);
 }
+
+/*  */
+
+.label.active {
+  background-color: var(--blue-500);
+  border: 1px solid var(--blue-300);
+}
+
+.label.active span {
+  color: var(--blue-100);
+}
+
+.label.active::after {
+  border-color: var(--blue-500) transparent transparent transparent;
+}
+
+.label.active::before {
+  border-color: var(--blue-300) transparent transparent transparent;
+}
+
+/*  */
 
 .label::after {
   content: "";
