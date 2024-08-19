@@ -1,6 +1,6 @@
 import { CAMP_API_KEY } from "./config.js";
 
-const baseUrl = `https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${CAMP_API_KEY}&numOfRows=400&pageNo=1&MobileOS=ETC&MobileApp=test&_type=json`;
+const baseUrl = `https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${CAMP_API_KEY}&numOfRows=1000&pageNo=1&MobileOS=ETC&MobileApp=test&_type=json`;
 
 export const fetchCampingData = async () => {
     try {

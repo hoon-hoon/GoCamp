@@ -6,26 +6,20 @@ let map;
 let markers = [];
 
 loadKakaoMap().then(async () => {
+    const loadingSpinner = document.querySelector('.loadingSpinner');
+    loadingSpinner.style.display = 'block';
     const container = document.getElementById('kakaoMap');
     const options = {
         center: new kakao.maps.LatLng(37.5665, 126.9780),
-        level: 10
+        level: 8
     };
 
     map = new kakao.maps.Map(container, options);
 
-    // 사용자 위치로 지도 중앙을 설정
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            const locPosition = new kakao.maps.LatLng(lat, lon);
-            map.setCenter(locPosition);
-        });
-    }
-
     const campingData = await fetchCampingData();
     addMarkers(campingData);
+
+    loadingSpinner.style.display = 'none';
 });
 
 // 마커 찍는 함수
