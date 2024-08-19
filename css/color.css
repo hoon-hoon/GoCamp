@@ -1,0 +1,17 @@
+:root {
+  --background-gray: #cacaca;
+  --border-gray: rgba(0, 0, 0, 0.1);
+  --light-gray-1: #d9d9d9;
+  --light-gray-2: #d5d5d5;
+  --red: #ed5959;
+  --green: #2ac182;
+  --blue-100: #f7fcff;
+  --blue-200: #ebf7ff;
+  --blue-300: #c7dce8;
+  --blue-400: #a0deff;
+  --blue-500: #5194b8;
+  --blue-600: #0b75ad;
+  --blue-700: #405966;
+  --blue-800: #202c33;
+  --blue-900: #04101c;
+}

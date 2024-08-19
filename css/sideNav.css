@@ -1,0 +1,264 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+  font-style: normal;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+strong {
+  color: black;
+  white-space: nowrap;
+}
+
+.sideNav {
+  width: 35%;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  transition: max-height 0.3s ease;
+}
+
+.toggleButton {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .toggleButton {
+    display: block;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: var(--blue-800);
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1000;
+    border: 1px solid var(--blue-300);
+    border-radius: 4px;
+    transition: bottom 0.15s ease;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .toggleButton:hover {
+    background-color: var(--blue-100);
+  }
+
+  .sideNav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 60px;
+    overflow: hidden;
+    z-index: 999;
+    transition: max-height 0.2s ease;
+  }
+
+  .sideNav.open {
+    max-height: 70vh;
+    box-shadow: 7px 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .wrap {
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+    display: none;
+  }
+
+  .sideNav.open .wrap {
+    display: block;
+  }
+
+  .kakaoMap {
+    height: calc(100vh - 60px);
+  }
+}
+
+.wrap {
+  padding: 5px 20px;
+  margin: 18px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.wrap::after {
+  content: "";
+  position: absolute;
+  right: 1%;
+  top: 50%;
+  width: 6px;
+  height: 100px;
+  background-color: var(--light-gray-1);
+  transform: translateY(-50%);
+  border-radius: 5px;
+}
+
+.content {
+}
+
+/* sideNav - head */
+
+.sideNav .logo {
+  height: 40px;
+  margin-bottom: 1rem;
+  background-image: url("../asset/logo2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.searchBar {
+  display: flex;
+  width: 100%;
+  border: 2px solid var(--blue-400);
+  border-radius: 6px;
+  background-color: var(--blue-100);
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.searchBar input {
+  flex: 1;
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.searchBar button {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  border-left: none;
+  cursor: pointer;
+}
+
+.search-results {
+  list-style-type: none;
+  padding: 0;
+  background-color: white;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.search-results li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  background-color: var(--blue-100);
+}
+
+/* SideNav - info */
+
+.info {
+  width: 100%;
+}
+
+.info h2 {
+  font-size: 18px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: 0.03em;
+  color: var(--blue-900);
+}
+
+.info .infoHead {
+  display: flex;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.info .infoHead_p {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.info .thumbnail {
+  width: 40%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.info .description,
+.info .address,
+.info .link,
+.info .operating-hours,
+.info .directions,
+.info .reservation,
+.info .facilities,
+.info .tools,
+.info .pets {
+  font-size: 14px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.infoHead_p .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.infoHead_p .address {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  align-items: center;
+  letter-spacing: 0.03em;
+  color: var(--blue-900);
+}
+
+.info .link a,
+.info .reservation a {
+  color: var(--blue-600);
+  text-decoration: none;
+}
+
+.info .link a:hover,
+.info .reservation a:hover {
+  text-decoration: underline;
+}
+
+.info .operating-hours {
+  color: var(--green);
+}
+
+.info .reservation {
+  color: var(--blue-600);
+}
+
+.info .pets {
+  color: var(--green);
+}
+
+.info .pets.unavailable {
+  color: var(--red);
+}

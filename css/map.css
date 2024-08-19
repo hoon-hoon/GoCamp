@@ -1,0 +1,74 @@
+.kakaoMap {
+  flex: 1;
+  height: 100%;
+  z-index: 0;
+}
+
+.label {
+  background: var(--blue-100);
+  border: 2px solid var(--blue-600);
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.label:hover {
+  background-color: var(--blue-200);
+}
+
+.label:hover span {
+  color: var(--blue-600);
+}
+
+.label::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 9px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.label:hover::after {
+  border-color: var(--blue-200) transparent transparent transparent;
+}
+
+.label::before {
+  content: "";
+  position: absolute;
+  bottom: -21.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: var(--blue-600) transparent transparent transparent;
+}
+
+.label span {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+
+/* select */
+
+.selectWrap {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.regionSelect {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
