@@ -33,3 +33,20 @@ export const searchCampingData = async (keyword) => {
         return [];
     }
 };
+
+
+export const getCampingDataFromLoc = async (latitude, longitude, radius = 10000) => {
+    const locBaseUrl = `http://apis.data.go.kr/B551011/GoCamping/locationBasedList?serviceKey=${CAMP_API_KEY}&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=test&_type=json&mapX=${longitude}&mapY=${latitude}&radius=${radius}`;
+
+    try {
+        const response = await fetch(locBaseUrl);
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        return data.response.body.items.item;
+    } catch (error) {
+        console.error('위치 기반 캠핑 데이터 가져오기 오류:', error);
+        return [];
+    }
+}
