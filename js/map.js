@@ -1,6 +1,6 @@
 import { loadKakaoMap } from './loadMap.js';
 import { fetchCampingData, getCampingDataFromLoc } from './api.js';
-import { updateSideNav, openSideNav } from './sideNav.js';
+import { updateSideNav, openSideNav, displayNearCampingData } from './sideNav.js';
 
 let map;
 let markers = [];
@@ -21,9 +21,13 @@ loadKakaoMap().then(async () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const { latitude, longitude } = position.coords;
+            const curLocation = new kakao.maps.LatLng(latitude, longitude);
+            map.setCenter(curLocation);
+
             const nearCampingData = await getCampingDataFromLoc(latitude, longitude);
             console.log(nearCampingData);
 
+            displayNearCampingData(nearCampingData);
         });
     } else {
         console.log("근처 캠핑장 조회 실패");

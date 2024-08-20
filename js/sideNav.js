@@ -122,3 +122,25 @@ document.querySelector('.searchBar input').addEventListener('keydown', (event) =
         handleSearch();
     }
 });
+
+// 근처 캠핑장 불러오기
+
+export const displayNearCampingData = (campsites) => {
+    const nearCampList = document.querySelector('.nearCampList');
+    nearCampList.innerHTML = '';
+
+    const map = getMap();
+
+    campsites.forEach(campsite => {
+        const listItem = document.createElement('li');
+        listItem.textContent = campsite.facltNm;
+
+        listItem.addEventListener('click', () => {
+            map.panTo(new kakao.maps.LatLng(campsite.mapY, campsite.mapX));
+            updateSideNav(campsite);
+            openSideNav();
+        });
+
+        nearCampList.appendChild(listItem);
+    });
+}
