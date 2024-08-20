@@ -124,7 +124,6 @@ document.querySelector('.searchBar input').addEventListener('keydown', (event) =
 });
 
 // 근처 캠핑장 불러오기
-
 export const displayNearCampingData = (campsites) => {
     const nearCampList = document.querySelector('.nearCampList');
     nearCampList.innerHTML = '';
