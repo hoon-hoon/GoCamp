@@ -36,7 +36,7 @@ export const searchCampingData = async (keyword) => {
 
 
 export const getCampingDataFromLoc = async (latitude, longitude, radius = 10000) => {
-    const locBaseUrl = `http://apis.data.go.kr/B551011/GoCamping/locationBasedList?serviceKey=${CAMP_API_KEY}&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=test&_type=json&mapX=${longitude}&mapY=${latitude}&radius=${radius}`;
+    const locBaseUrl = `https://apis.data.go.kr/B551011/GoCamping/locationBasedList?serviceKey=${CAMP_API_KEY}&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=test&_type=json&mapX=${longitude}&mapY=${latitude}&radius=${radius}`;
 
     try {
         const response = await fetch(locBaseUrl);
